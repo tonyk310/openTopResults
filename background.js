@@ -3,11 +3,19 @@
 var urlRegex = /^https?:\/\/(?:[^./?#]+\.)?duckduckgo\.com/;
 
 // A function to use as callback
-function doStuffWithDom(domContent) {
-  console.log('I received the following DOM content:\n' + domContent);
-  browser.tabs.create({
-    "url": domContent
-  });
+function createTabLinks(domContent) {
+
+  var parsedLinkStringArray = JSON.parse(domContent);
+
+  for (var i = 0; i < parsedLinkStringArray.length; i++) {
+    var currentLinkString = parsedLinkStringArray[i];
+
+    browser.tabs.create({
+      "url": currentLinkString,
+      // "active": false, stay on the current tab.  Does not go to the created tab.
+      "active": false
+    });    
+  }
 }
 
 // When the browser-action button is clicked...
@@ -15,6 +23,6 @@ browser.browserAction.onClicked.addListener(function (tab) {
     // ...check the URL of the active tab against our pattern and...
     if (urlRegex.test(tab.url)) {
         // ...if it matches, send a message specifying a callback too
-        browser.tabs.sendMessage(tab.id, {text: 'report_back'}, doStuffWithDom);
+        browser.tabs.sendMessage(tab.id, {text: 'message_received'}, createTabLinks);
     }
 });
