@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "name": "Open Duck First Link",
+  "name": "Open Top Three",
   "version": "0.0",
 
   "description": "Opens the top search result link on duckduckgo.",
@@ -13,7 +13,7 @@
 
   // Scripts which have access to the active page.
   "content_scripts": [{
-    "matches": ["*://*.duckduckgo.com/?q*"],
+    "matches": ["*://*.duckduckgo.com/*"],
     "js": ["/content_scripts/content.js"]
   }],
 

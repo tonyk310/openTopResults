@@ -12,6 +12,8 @@ browser.runtime.onMessage.addListener(function (msg, sender, callback) {
       // var hrefAsString = link.getAttribute('href');
       // sendResponse(hrefAsString);
 
+      console.log("message_received");
+
       var linkStringArray = [];
       // Get the set of links on the page
       var h2Set = document.getElementsByTagName('h2');
