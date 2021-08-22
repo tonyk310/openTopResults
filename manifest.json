@@ -1,7 +1,6 @@
 {
-
   "manifest_version": 2,
-  "name": "Open Top Result 1",
+  "name": "Open Duck First Link",
   "version": "0.0",
 
   "description": "Opens the top search result link on duckduckgo.",
@@ -14,8 +13,8 @@
 
   // Scripts which have access to the active page.
   "content_scripts": [{
-    "matches": ["*://*.stackoverflow.com/*"],
-    "js": ["content.js"]
+    "matches": ["*://*.duckduckgo.com/*"],
+    "js": ["/content_scripts/content.js"]
   }],
 
   // The button on the firefox browser.
