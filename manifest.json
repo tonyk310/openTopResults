@@ -1,0 +1,29 @@
+{
+
+  "manifest_version": 2,
+  "name": "Open Top Result 1",
+  "version": "0.0",
+
+  "description": "Opens the top search result link on duckduckgo.",
+
+  // Script for the processes of the extension.
+  "background": {
+    "persistent": false,
+    "scripts": ["background.js"]
+  },
+
+  // Scripts which have access to the active page.
+  "content_scripts": [{
+    "matches": ["*://*.stackoverflow.com/*"],
+    "js": ["content.js"]
+  }],
+
+  // The button on the firefox browser.
+  "browser_action": {
+    "default_title": "Test Extension"
+  },
+
+  // Allows it to access the current tabs.
+  "permissions": ["activeTab"]
+}
+
