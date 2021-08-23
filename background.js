@@ -6,6 +6,7 @@ var urlRegex = /^https?:\/\/(?:[^./?#]+\.)?duckduckgo\.com/;
 function createTabLinks(domContent) {
 
   var parsedLinkStringArray = JSON.parse(domContent);
+  console.log(parsedLinkStringArray);
 
   for (var i = 0; i < parsedLinkStringArray.length; i++) {
     var currentLinkString = parsedLinkStringArray[i];

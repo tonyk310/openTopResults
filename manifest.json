@@ -14,7 +14,7 @@
 
   // Scripts which have access to the active page.
   "content_scripts": [{
-    "matches": ["*://*.duckduckgo.com/*"],
+    "matches": ["*://*.duckduckgo.com/*", "*://*.google.com/search?*"],
     "js": ["/content_scripts/content.js"]
   }],
 
