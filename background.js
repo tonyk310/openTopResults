@@ -11,8 +11,9 @@ function createTabLinks(domContent) {
     var currentLinkString = parsedLinkStringArray[i];
 
     browser.tabs.create({
+      // set the url of the created tab.
       "url": currentLinkString,
-      // "active": false, stay on the current tab.  Does not go to the created tab.
+      // "active": false, stay in the current tab.  Do not switch tabs to the created tab.
       "active": false
     });    
   }

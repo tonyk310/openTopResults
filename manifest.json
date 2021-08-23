@@ -7,6 +7,7 @@
 
   // Script for the processes of the extension.
   "background": {
+    // This throws a warning.
     "persistent": false,
     "scripts": ["background.js"]
   },
@@ -21,6 +22,14 @@
   "browser_action": {
     "default_title": "Test Extension"
   },
+
+  "commands":{
+      "_execute_browser_action": {
+          "suggested_key": {
+              "default": "Ctrl+Shift+Y"
+          }
+      }
+  },  
 
   // Allows it to access the current tabs.
   "permissions": ["activeTab"]
