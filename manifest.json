@@ -1,9 +1,14 @@
 {
+  // "description": "XXX",
   "manifest_version": 2,
   "name": "Open Top Three",
   "version": "1.1",
+  // "homepage": "XXX",
+  "icons": {
+    "48": "icons/three_img-48.png"
+  },
 
-  "description": "Opens the top search result link on duckduckgo.",
+  "description": "Opens the top search result link on Duckduckgo.",
 
   // Script for the processes of the extension.
   "background": {
@@ -20,7 +25,9 @@
 
   // The button on the firefox browser.
   "browser_action": {
-    "default_title": "Test Extension"
+    "default_icon": "icons/three_img-32.png",
+    // "default_popup": "popup/choose_beast.html",
+    "default_title": "Three"
   },
 
   "commands":{
