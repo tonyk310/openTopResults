@@ -7,8 +7,9 @@ function createTabLinks(domContent) {
 
   var parsedLinkStringArray = JSON.parse(domContent);
   // console.log(parsedLinkStringArray);
+  var numberOfLinksToOpen = 3;
 
-  for (var i = 0; i < parsedLinkStringArray.length; i++) {
+  for (var i = 0; i < numberOfLinksToOpen; i++) {
     var currentLinkString = parsedLinkStringArray[i];
 
     browser.tabs.create({
@@ -32,38 +33,6 @@ browser.browserAction.onClicked.addListener(function (tab) {
     }
 });
 
-
-
-
-// From Beastify
-
-// browser.tabs.executeScript({file: "/content_scripts/content.js"})
-// .then(function() {
-//   // When the browser-action button is clicked...
-//   browser.browserAction.onClicked.addListener(function (tab) {
-//     browser.tabs.sendMessage(tab.id, {text: 'message_received'}, createTabLinks);
-//   });  
-// });
-
-// browser.tabs.executeScript({file: "/content_scripts/content.js"})
-// .then(function() {
-//   console.log("Hello from background.js, the promise was returned."); 
-// }).catch(function() {
-//   console.log("We CAUGHT an error.");
-// });
-
-// Stack Overflow
-// var updateTextTo = document.getElementById('comments').value;
-// browser.tabs.query({active: true, currentWindow: true}, function(tabs) {
-//   console.log(tabs);
-//     browser.tabs.executeScript(tabs[0].id, {
-//         file: "/content_scripts/content.js"
-//     }, function(){
-//         browser.tabs.sendMessage(
-//           tabs[0].id, { text: 'message_received' }, createTabLinks
-//         );
-//     });
-// });
 
 
 

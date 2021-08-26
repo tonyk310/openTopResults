@@ -4,13 +4,15 @@ browser.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
     if (msg.text === 'message_received') {
 
       var linkStringArray = [];
-      // Get the set of links contained within the h2's on the page.
+      // Grab the `links` element from the DOM.
       var linksElement = document.getElementById('links');
-      var linksH2Set = linksElement.querySelectorAll('h2');
-      // for each element 'currentLink' get the href
-      for (var i = 0; i < 3; i++) {
-        var currentH2Object = linksH2Set[i];
-        var currentLinkString = currentH2Object.querySelector('a').href;
+      // The links element contains `h2` which contain the hyper-links we are looking for.
+      var h2Set = linksElement.querySelectorAll('h2');
+
+      // for each element 'currentLinkString' in the linkSet
+      for (var i = 0; i < h2Set.length; i++) {
+        var currentH2Element = h2Set[i];
+        var currentLinkString = currentH2Element.querySelector('a').href;
         linkStringArray.push(currentLinkString);
       }
 
