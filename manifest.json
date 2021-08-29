@@ -36,9 +36,22 @@
               "default": "Ctrl+Shift+Y"
           }
       }
-  },  
+  },
 
   // Allows it to access the current tabs.
-  "permissions": ["activeTab"]
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+
+  "options_ui": {
+    "page": "options/options.html"
+  },
+
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "openTopThree@example.com"
+    }
+  }
 }
 
