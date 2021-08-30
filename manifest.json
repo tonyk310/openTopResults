@@ -27,6 +27,7 @@
   "browser_action": {
     "default_icon": "icons/ribbon-32.png",
     // "default_popup": "popup/choose_beast.html",
+    // maybe i can make this dynamic
     "default_title": "Three"
   },
 
