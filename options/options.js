@@ -5,13 +5,16 @@ function restoreStoragePreferences() {
   }
 
   function setValueToDOM(res) {
-    var form = document.querySelector("form");
-    var inputSet = form.querySelectorAll("input");
-    for (var i = 0; i < inputSet.length; i++) {
-      if (inputSet[i].id === res.integer) {
-        inputSet[i].checked = true;
-      }
-    }
+    // var form = document.querySelector("form");
+    // var inputSet = form.querySelectorAll("input");
+    // for (var i = 0; i < inputSet.length; i++) {
+    //   if (inputSet[i].id === res.integer) {
+    //     inputSet[i].checked = true;
+    //   }
+    // }
+
+    var checkSavedRadioElement = document.getElementById(res.integer);
+    checkSavedRadioElement.checked = true;
   }
 
 
