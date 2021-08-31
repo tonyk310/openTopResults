@@ -36,17 +36,5 @@ browser.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
         sendResponse(serializedLinkSet);
         
       }
-
-
-
-      //////////////////////////////
-      // GOOGLE //
-      /*
-        var hrefSet = [];
-        for (var i = 0; i < 5; i++) {
-          var href = h3s[i].querySelector('a').href;
-          hrefSet.push(href);
-        }
-      */
     }
 });
