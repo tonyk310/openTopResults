@@ -27,6 +27,11 @@ var preferenceValue = 3;
 
 browser.browserAction.onClicked.addListener(function (tab) {
 
+var urlString = tab.url;
+var search_engine = urlString.replace(/.+\/\/|www.|\..+/g, '');
+
+
+
 
   browser.storage.sync.get("integer").then(function(res) {
     console.log("inside createTabLinks returning the value :" + res.integer);
@@ -39,10 +44,10 @@ browser.browserAction.onClicked.addListener(function (tab) {
 
   //
     // ...check the URL of the active tab against our pattern and...
-    if (urlRegex.test(tab.url)) {
+    // if (urlRegex.test(tab.url)) {
         // ...if it matches, send a message specifying a callback too
-        browser.tabs.sendMessage(tab.id, {text: 'message_received'}, createTabLinks);
-    }
+        browser.tabs.sendMessage(tab.id, {text: 'message_received', "search_engine": search_engine}, createTabLinks);
+    // }
 });
 
 
