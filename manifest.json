@@ -13,7 +13,7 @@
   // Script for the processes of the extension.
   "background": {
     // This throws a warning.
-    "persistent": false,
+    // "persistent": false,
     "scripts": ["background.js"]
   },
 
