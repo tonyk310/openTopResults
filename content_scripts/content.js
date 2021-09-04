@@ -2,7 +2,7 @@
 browser.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
     // If the received message has the expected format...
 
-    if (msg.text === 'message_received') {
+    // if (msg.text === 'message_received') {
 
       if (msg.search_engine === "duckduckgo") {
         var linkStringArray = [];
@@ -20,21 +20,23 @@ browser.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
 
         // https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/onMessage#addlistener_syntax
         var serializedLinkStringArray = JSON.stringify(linkStringArray);
-        sendResponse(serializedLinkStringArray);        
+        // sendResponse(serializedLinkStringArray);   
+        // console.log(linkStringArray + ": contentScript");
+        return Promise.resolve({"linkStringArray": linkStringArray});     
       }
 
-      var linkSet = [];
-      if (msg.search_engine === "google") {
-        var searchContainerElement = document.getElementById('search');
-        var linksContainerElementSet = searchContainerElement.querySelectorAll(".yuRUbf");
-        for (var i = 0; i < linksContainerElementSet.length; i++) {
-          var currentLinkString = linksContainerElementSet[i].querySelector('a').href;
-          linkSet.push(currentLinkString);
-        }
+    //   var linkSet = [];
+    //   if (msg.search_engine === "google") {
+    //     var searchContainerElement = document.getElementById('search');
+    //     var linksContainerElementSet = searchContainerElement.querySelectorAll(".yuRUbf");
+    //     for (var i = 0; i < linksContainerElementSet.length; i++) {
+    //       var currentLinkString = linksContainerElementSet[i].querySelector('a').href;
+    //       linkSet.push(currentLinkString);
+    //     }
 
-        var serializedLinkSet = JSON.stringify(linkSet);
-        sendResponse(serializedLinkSet);
+    //     var serializedLinkSet = JSON.stringify(linkSet);
+    //     sendResponse(serializedLinkSet);
         
-      }
-    }
+    //   }
+    // }
 });
