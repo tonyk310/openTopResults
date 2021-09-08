@@ -1,42 +1,32 @@
+
+
 // Listen for messages
 browser.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
-    // If the received message has the expected format...
 
-    // if (msg.text === 'message_received') {
+  function getLinkString(linksSet) {
+    for (var i = 0; i < linksSet.length; i++) {
+      var currentLinkString = linksSet[i].querySelector('a').href;
+      linksArray.push(currentLinkString);
+    }         
+  }
 
-      if (msg.search_engine === "duckduckgo") {
-        var linkStringArray = [];
-        // Grab the `links` element from the DOM.
-        var linksElement = document.getElementById('links');
-        // The links element contains `h2` which contain the hyper-links we are looking for.
-        var h2Set = linksElement.querySelectorAll('h2');
+  var linksArray = [];
+  var linksElement;
+  var linksSet;
 
-        // for each element 'currentLinkString' in the linkSet
-        for (var i = 0; i < h2Set.length; i++) {
-          var currentH2Element = h2Set[i];
-          var currentLinkString = currentH2Element.querySelector('a').href;
-          linkStringArray.push(currentLinkString);
-        }
+  if (msg.search_engine === "duckduckgo") {
+    // Grab the `links` element from the DOM.
+    linksElement = document.getElementById('links');
+    // The links element contains `h2` which contain the hyper-links we are looking for.
+    linksSet = linksElement.querySelectorAll('h2');
+    getLinkString(linksSet);
+  }
 
-        // https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/onMessage#addlistener_syntax
-        var serializedLinkStringArray = JSON.stringify(linkStringArray);
-        // sendResponse(serializedLinkStringArray);   
-        // console.log(linkStringArray + ": contentScript");
-        return Promise.resolve({"linkStringArray": linkStringArray});     
-      }
+  if (msg.search_engine === "google") {
+    linksElement = document.getElementById('search');
+    linksSet = linksElement.querySelectorAll(".yuRUbf");
+    getLinkString(linksSet);
+  }
 
-    //   var linkSet = [];
-    //   if (msg.search_engine === "google") {
-    //     var searchContainerElement = document.getElementById('search');
-    //     var linksContainerElementSet = searchContainerElement.querySelectorAll(".yuRUbf");
-    //     for (var i = 0; i < linksContainerElementSet.length; i++) {
-    //       var currentLinkString = linksContainerElementSet[i].querySelector('a').href;
-    //       linkSet.push(currentLinkString);
-    //     }
-
-    //     var serializedLinkSet = JSON.stringify(linkSet);
-    //     sendResponse(serializedLinkSet);
-        
-    //   }
-    // }
+  return Promise.resolve({"linksArray": linksArray}); 
 });
