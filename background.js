@@ -1,4 +1,3 @@
-
 function createTabLinks(response) {
   var numberOfLinksToOpen = preferenceValue;
   var linksArray = response.linksArray;
@@ -15,9 +14,12 @@ function createTabLinks(response) {
   }
 }
 
+function onError(error) {
+  console.log(`Error: ${error}`);
+}
+
 // Global Variable
 var preferenceValue;
-
 function getPreferenceValueFromStorage() {
   browser.storage.sync.get("integer").then(function(res) {
     // Assign the preferenceValue as a global variable.
@@ -26,9 +28,7 @@ function getPreferenceValueFromStorage() {
     // put in a default value to save as preference value.
     preferenceValue = res.integer || 3;
 
-  }).catch(function(error) {
-    console.log("you found an error, storage sync");
-  });  
+  }).catch(onError);  
 }
 
 function sendMessageToContentScript(tab) {
@@ -36,7 +36,7 @@ function sendMessageToContentScript(tab) {
   var searchEngineString = urlString.replace(/.+\/\/|www.|\..+/g, '');  
   if (searchEngineString === "duckduckgo" || searchEngineString === "google") {
     // Send the message and then run the promise.
-    browser.tabs.sendMessage(tab.id, {text: 'message_received', "search_engine": searchEngineString}).then(createTabLinks);    
+    browser.tabs.sendMessage(tab.id, {"search_engine": searchEngineString}).then(createTabLinks);    
   }
   
 }

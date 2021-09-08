@@ -5,7 +5,7 @@ function restoreStoragePreferences() {
   }
 
   function setValueToDOM(res) {
-    var checkSavedRadioElement = document.getElementById(res.integer);
+    var checkSavedRadioElement = document.getElementById(res.integer || 3);
     checkSavedRadioElement.checked = true;
   }
 
