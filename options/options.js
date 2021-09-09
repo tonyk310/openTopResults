@@ -27,12 +27,9 @@ function savePreference(value) {
 
 document.querySelector("form").addEventListener('click', function (event) {
     if (event.target && event.target.matches("input[type='radio']")) {
-        // console.log("second " + event.target.value);
         selectedValue = event.target.value;
-        // console.log(selectedValue);
         savePreference(selectedValue);
     }
 });
-
 document.addEventListener("DOMContentLoaded", restoreStoragePreferences);
 

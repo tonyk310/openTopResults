@@ -1,5 +1,4 @@
 {
-  // "description": "XXX",
   "manifest_version": 2,
   "name": "Open Top Three",
   "version": "1.1",
@@ -10,25 +9,18 @@
 
   "description": "Opens the top search result link on Duckduckgo.",
 
-  // Script for the processes of the extension.
   "background": {
-    // This throws a warning.
-    // "persistent": false,
     "scripts": ["background.js"]
   },
 
-  // Scripts which have access to the active page.
   "content_scripts": [{
     "matches": ["*://*.duckduckgo.com/*", "*://*.google.com/search?*"],
     "js": ["/content_scripts/content.js"]
   }],
 
-  // The button on the firefox browser.
   "browser_action": {
     "default_icon": "icons/ribbon-32.png",
-    // "default_popup": "popup/choose_beast.html",
-    // maybe i can make this dynamic
-    "default_title": "Three"
+    "default_title": "Open Top Results"
   },
 
   "commands":{
