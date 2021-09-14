@@ -1,5 +1,3 @@
-
-
 // Listen for messages
 browser.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
 
@@ -16,9 +14,7 @@ browser.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
   var linksSet;
 
   if (msg.search_engine === "duckduckgo") {
-    // Grab the `links` element from the DOM.
     linksElement = document.getElementById('links');
-    // From the linksElement create `linksSet` which creates another set containing elements with class `results`
     linksSet = linksElement.getElementsByClassName('result');
   }
 

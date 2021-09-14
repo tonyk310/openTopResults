@@ -31,7 +31,6 @@
       }
   },
 
-  // Allows it to access the current tabs.
   "permissions": [
     "activeTab",
     "storage"

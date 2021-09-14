@@ -11,7 +11,6 @@ function restoreStoragePreferences() {
 
 
   let getValueFromStorage = browser.storage.sync.get("integer");
-  // Complete the promise
   getValueFromStorage.then(setValueToDOM, onError);
 }
 

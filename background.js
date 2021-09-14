@@ -20,12 +20,9 @@ function onError(error) {
 
 // Global Variable
 var preferenceValue;
+
 function getPreferenceValueFromStorage() {
   browser.storage.sync.get("integer").then(function(res) {
-    // Assign the preferenceValue as a global variable.
-      // This is because the the value is returned in a promise and I cannot pass this through to the callback.
-    // If the promise returns undefined because the value has never been set
-    // put in a default value to save as preference value.
     preferenceValue = res.integer || 3;
 
   }).catch(onError);  
@@ -35,8 +32,7 @@ function sendMessageToContentScript(tab) {
   var urlString = tab.url;
   var searchEngineString = urlString.replace(/.+\/\/|www.|\..+/g, '');  
   if (searchEngineString === "duckduckgo" || searchEngineString === "google") {
-    // Send the message and then run the promise.
-    browser.tabs.sendMessage(tab.id, {"search_engine": searchEngineString}).then(createTabLinks);    
+    browser.tabs.sendMessage(tab.id, {"search_engine": searchEngineString}).then(createTabLinks).catch(onError);    
   }
   
 }
