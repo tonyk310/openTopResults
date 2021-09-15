@@ -1,7 +1,5 @@
 # openTopResults
 
-**This add-on injects CSS into web pages. The `addons.mozilla.org` domain disallows this operation, so this add-on will not work properly when it's run on pages in the `addons.mozilla.org` domain.**
-
 ** This add-on opens the top three search results links of a Google or DuckDuckGo search and opens the specified number of links in new browser tabs.**
 
 ## What it does

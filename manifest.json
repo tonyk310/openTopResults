@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Open Top Results",
   "version": "1.1",
-  // "homepage": "XXX",
+  "homepage": "https://github.com/tonyk310/openTopResults",
   "icons": {
     "48": "icons/ribbon-48.png"
   },
